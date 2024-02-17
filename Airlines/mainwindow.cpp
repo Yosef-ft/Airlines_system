@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug () << "Database connected" << Qt::endl;
     }
     else
-        qDebug() << "Unable t connect database" << Qt::endl;
+        qDebug() << "Unable to connect database" << Qt::endl;
 
     ui->setupUi(this);
 }
