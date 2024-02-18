@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 #include <QSqlDatabase>
 #include <QDebug>
+#include "signup.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -23,3 +24,16 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_submit_pushButton_clicked()
+{
+    if (ui->login_radioButton->isChecked()){
+
+    }
+    else if (ui->signUp_radioButton->isChecked()){
+        this->hide();
+        SignUp * signup = new SignUp(this);
+        signup->show();
+    }
+}
+
