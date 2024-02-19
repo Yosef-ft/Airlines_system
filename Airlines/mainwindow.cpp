@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     bool ok = connect_db();
     if(ok) {
         qDebug () << "Database connected" << Qt::endl;
+        close_db();
     }
     else
         qDebug() << "Unable to connect database" << Qt::endl;
