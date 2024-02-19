@@ -16,6 +16,11 @@ public:
     explicit Passanger(QWidget *parent = nullptr);
     ~Passanger();
 
+private slots:
+    void on_login_pushButton_clicked();
+
+    void on_forgot_pushButton_clicked();
+
 private:
     Ui::Passanger *ui;
     std::string ticketid;

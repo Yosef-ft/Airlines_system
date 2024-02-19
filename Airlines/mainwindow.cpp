@@ -3,6 +3,7 @@
 #include <QSqlDatabase>
 #include <QDebug>
 #include "signup.h"
+#include "passanger.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -29,7 +30,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_submit_pushButton_clicked()
 {
     if (ui->login_radioButton->isChecked()){
-
+        this->hide();
+        Passanger * login = new Passanger(this);
+        login->show();
     }
     else if (ui->signUp_radioButton->isChecked()){
         this->hide();
