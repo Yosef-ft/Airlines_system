@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QMainWindow>
+#include <QString>
 
 namespace Ui {
 class Login;
@@ -14,6 +15,12 @@ class Login : public QMainWindow
 public:
     explicit Login(QWidget *parent = nullptr, QString passanger_id = QString() );
     ~Login();
+
+    QString pass_id;
+
+
+private slots:
+    void on_submit_pushButton_clicked();
 
 private:
     Ui::Login *ui;

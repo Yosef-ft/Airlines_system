@@ -24,21 +24,21 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QRadioButton" name="radioButton">
+          <widget class="QRadioButton" name="edit_radioButton">
            <property name="text">
-            <string>Edit personal informatioin</string>
+            <string>Edit and show personal information</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_2">
+          <widget class="QRadioButton" name="book_radioButton">
            <property name="text">
             <string>Book a Flight</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_3">
+          <widget class="QRadioButton" name="ticket_radioButton">
            <property name="text">
             <string>Ticket Information</string>
            </property>
