@@ -5,7 +5,7 @@
 #include <QString>
 #include <QSqlQuery>
 #include "forgot_password.h"
-
+#include "login.h"
 
 Passanger::Passanger(QWidget *parent)
     : QMainWindow(parent)
@@ -38,6 +38,9 @@ void Passanger::on_login_pushButton_clicked()
             if (query.next()){
                 QString passangerid = query.value("passangerid").toString();
                 qDebug () << "the passanger id is" << passangerid << Qt::endl;
+                Login * main_details = new Login(this, passangerid);
+                hide();
+                main_details->show();
             }
         }
     }
