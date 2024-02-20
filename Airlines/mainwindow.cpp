@@ -35,7 +35,7 @@ void MainWindow::on_submit_pushButton_clicked()
         login->show();
     }
     else if (ui->signUp_radioButton->isChecked()){
-        this->hide();
+        //this->hide();
         SignUp * signup = new SignUp(this);
         signup->show();
     }

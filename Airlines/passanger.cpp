@@ -4,6 +4,8 @@
 #include <QMessageBox>
 #include <QString>
 #include <QSqlQuery>
+#include "forgot_password.h"
+
 
 Passanger::Passanger(QWidget *parent)
     : QMainWindow(parent)
@@ -52,7 +54,9 @@ void Passanger::on_forgot_pushButton_clicked()
     bool check = home->connect_db();
 
     if (check){
-
+        this->hide();
+        Forgot_password * pass = new Forgot_password(this);
+        pass->show();
     }
     else{
         QMessageBox::critical(this, "Error", "Unable to connect to database");
