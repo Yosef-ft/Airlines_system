@@ -44,7 +44,7 @@ void Passanger::on_login_pushButton_clicked()
         }
     }
     else{
-        QMessageBox::critical(this, "Error", "Unable to connect to database");
+        QMessageBox::critical(this, "Error", "Unable to connect to database!");
     }
 
 }
