@@ -15,6 +15,11 @@ public:
     explicit Edit_info(QWidget *parent = nullptr, QString pass_id = QString());
     ~Edit_info();
 
+    QString passangerId;
+
+private slots:
+    void on_edit_pushButton_clicked();
+
 private:
     Ui::Edit_info *ui;
 };
