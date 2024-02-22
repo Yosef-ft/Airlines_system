@@ -23,7 +23,7 @@ protected:
     int pirce;
 
 public:
-    explicit Book(QWidget *parent = nullptr);
+    explicit Book(QWidget *parent = nullptr, QString pass_id = QString());
     ~Book();
 
 private:
