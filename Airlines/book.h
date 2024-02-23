@@ -26,6 +26,9 @@ public:
     explicit Book(QWidget *parent = nullptr, QString pass_id = QString());
     ~Book();
 
+private slots:
+    void on_submit_pushButton_clicked();
+
 private:
     Ui::Book *ui;
 };

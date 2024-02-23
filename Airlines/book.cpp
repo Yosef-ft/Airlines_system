@@ -12,3 +12,14 @@ Book::~Book()
 {
     delete ui;
 }
+
+void Book::on_submit_pushButton_clicked()
+{
+    if (ui->local_radioButton->isChecked()){
+        ui->stackedWidget->setCurrentIndex(1);
+    }
+    else if (ui->international_radioButton->isChecked()){
+        ui->stackedWidget->setCurrentIndex(2);
+    }
+}
+
