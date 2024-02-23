@@ -23,3 +23,15 @@ void Book::on_submit_pushButton_clicked()
     }
 }
 
+
+void Book::on_bookD_pushButton_clicked()
+{
+
+}
+
+
+void Book::on_book_I_pushButton_clicked()
+{
+
+}
+

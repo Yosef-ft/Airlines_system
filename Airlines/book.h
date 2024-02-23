@@ -29,6 +29,10 @@ public:
 private slots:
     void on_submit_pushButton_clicked();
 
+    void on_bookD_pushButton_clicked();
+
+    void on_book_I_pushButton_clicked();
+
 private:
     Ui::Book *ui;
 };
