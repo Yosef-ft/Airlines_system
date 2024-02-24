@@ -52,10 +52,13 @@ void Book::on_bookD_pushButton_clicked()
     QDate date_value = ui->dateEdit->date();
 
     date = date_value.toString("yyyy-MM-dd");
-    time_departure = time_value.toString("hh-mm:ss AP");
+    time_departure = time_value.toString("hh:mm:ss AP");
     source = ui->source_comboBox->currentText();
     destination = ui->destination_comboBox->currentText();
-    qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination;
+    QTime a_time = time_value.addSecs(2 * 3600);
+    time_arrival = a_time.toString("hh:mm:ss AP");
+    ui->arrival_label->setText(time_arrival);
+    qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival;
 
 }
 
@@ -70,6 +73,10 @@ void Book::on_book_I_pushButton_clicked()
     time_departure = time_value.toString("hh:mm:ss AP");
     source = ui->source_I_comboBox->currentText();
     destination = ui->destination_I_comboBox->currentText();
-    qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination;
+    QTime a_time = time_value.addSecs(2 * 3600);
+    time_arrival = a_time.toString("hh:mm:ss AP");
+    ui->arrival_I_label->setText(time_arrival);
+    qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival;
+
 }
 
