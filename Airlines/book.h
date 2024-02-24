@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <string>
+#include <QString>
 
 namespace Ui {
 class Book;
@@ -12,12 +13,13 @@ class Book : public QMainWindow
 {
     Q_OBJECT
 protected:
-    std::string ticketid;
-    int date;
-    std::string source;
-    std::string destination;
-    std::string time_arrival;
-    std::string time_depardture;
+    std::string ticketid();
+    std::string id;
+    QString date;
+    QString source;
+    QString destination;
+    QString time_arrival;
+    QString time_departure;
     std::string airlines;
     std::string seat;
     int pirce;
