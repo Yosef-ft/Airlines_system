@@ -85,7 +85,7 @@ void Book::on_book_I_pushButton_clicked()
     QTime time_value = ui->international_timeEdit->time();
     QDate date_value = ui->international_dateEdit->date();
 
-    date = date_value.toString("yyyy-mm-dd");
+    date = date_value.toString("yyyy-MM-dd");
     time_departure = time_value.toString("hh:mm:ss AP");
     source = ui->source_I_comboBox->currentText();
     destination = ui->destination_I_comboBox->currentText();
