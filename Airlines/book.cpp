@@ -6,6 +6,8 @@
 #include <QTime>
 #include <QDate>
 #include <QDebug>
+#include <QMessageBox>
+#include <string>
 
 std::string Book::ticketid()
 {
@@ -68,6 +70,9 @@ void Book::on_bookD_pushButton_clicked()
     else{
         seat = "FC-";
     }
+    int luggage = ui->luggageD_lineEdit->text().toInt();
+    int price = 300 + 100 * luggage;
+    QMessageBox::information(this, "Price", ("Your ticket price is " + std::to_string(price)).c_str() );
     qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival << " "
              << airlines << " " << seat;
 
@@ -97,6 +102,9 @@ void Book::on_book_I_pushButton_clicked()
     else{
         seat = "FC-";
     }
+    int luggage = ui->lug_I_lineEdit->text().toInt();
+    int price = 300 + 100 * luggage;
+    QMessageBox::information(this, "Price", ("Your ticket price is " + std::to_string(price)).c_str() );
     qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival << " "
              << airlines << " " << seat;
 }

@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -235,6 +235,16 @@
           <item row="3" column="1">
            <widget class="QDateEdit" name="dateEdit"/>
           </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Luggage you will be carring(KG)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QLineEdit" name="luggageD_lineEdit"/>
+          </item>
          </layout>
         </item>
         <item>
@@ -404,6 +414,16 @@
              </property>
             </item>
            </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Luggage you will be carring(KG)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QLineEdit" name="lug_I_lineEdit"/>
           </item>
          </layout>
         </item>
