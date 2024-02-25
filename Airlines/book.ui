@@ -176,9 +176,6 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QDateEdit" name="dateEdit"/>
-          </item>
           <item row="4" column="0">
            <widget class="QLabel" name="label_7">
             <property name="text">
@@ -192,6 +189,51 @@
              <string/>
             </property>
            </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Type of class </string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QComboBox" name="classD_comboBox">
+            <item>
+             <property name="text">
+              <string>Economy class</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Business class</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>First class</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_15">
+            <property name="text">
+             <string>Avalilable Airlines </string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QComboBox" name="airlinesD_comboBox">
+            <item>
+             <property name="text">
+              <string>Ethiopian Airlines</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDateEdit" name="dateEdit"/>
           </item>
          </layout>
         </item>
@@ -309,6 +351,58 @@
             <property name="text">
              <string/>
             </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Type of class</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QComboBox" name="class_I_comboBox">
+            <item>
+             <property name="text">
+              <string>First class</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Business class</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Economy class</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string>Available Airlines</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QComboBox" name="airlines_I_comboBox">
+            <item>
+             <property name="text">
+              <string>Quatar Airlines</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Ethipian Airlines</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Emirates Airlines</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>

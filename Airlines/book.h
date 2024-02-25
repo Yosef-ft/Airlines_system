@@ -20,8 +20,8 @@ protected:
     QString destination;
     QString time_arrival;
     QString time_departure;
-    std::string airlines;
-    std::string seat;
+    QString airlines;
+    QString seat;
     int pirce;
 
 public:

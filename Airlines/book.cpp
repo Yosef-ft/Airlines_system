@@ -58,7 +58,18 @@ void Book::on_bookD_pushButton_clicked()
     QTime a_time = time_value.addSecs(2 * 3600);
     time_arrival = a_time.toString("hh:mm:ss AP");
     ui->arrival_label->setText(time_arrival);
-    qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival;
+    airlines = ui->airlinesD_comboBox->currentText();
+    if (ui->classD_comboBox->currentText() == "Economy class"){
+        seat = "EC-";
+    }
+    else if (ui->classD_comboBox->currentText() == "Business class"){
+        seat = "BC-";
+    }
+    else{
+        seat = "FC-";
+    }
+    qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival << " "
+             << airlines << " " << seat;
 
 }
 
@@ -76,7 +87,17 @@ void Book::on_book_I_pushButton_clicked()
     QTime a_time = time_value.addSecs(2 * 3600);
     time_arrival = a_time.toString("hh:mm:ss AP");
     ui->arrival_I_label->setText(time_arrival);
-    qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival;
-
+    airlines = ui->airlines_I_comboBox->currentText();
+    if (ui->classD_comboBox->currentText() == "Economy class"){
+        seat = "EC-";
+    }
+    else if (ui->classD_comboBox->currentText() == "Business class"){
+        seat = "BC-";
+    }
+    else{
+        seat = "FC-";
+    }
+    qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival << " "
+             << airlines << " " << seat;
 }
 
