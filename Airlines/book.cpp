@@ -63,37 +63,54 @@ void Book::on_bookD_pushButton_clicked()
     ui->arrival_label->setText(time_arrival);
     airlines = ui->airlinesD_comboBox->currentText();
     QString seatPre;
-    if (ui->classD_comboBox->currentText() == "Economy class"){
-        seatPre = "EC-";
-        Seat_no * seat = new Seat_no(this);
-        auto ret = seat->exec();
-        if (ret == QDialog::Accepted){
-            QString seat_num = QString::number(seat->getSeatNO());
-            seatPre += seat_num;
-        }
-    }
-    else if (ui->classD_comboBox->currentText() == "Business class"){
-        seatPre = "BC-";
-        Seat_no * seat = new Seat_no(this);
-        auto ret = seat->exec();
-        if (ret == QDialog::Accepted){
-            QString seat_num = QString::number(seat->getSeatNO());
-            seatPre += seat_num;
-        }
-    }
-    else{
-        seatPre = "FC-";
-        Seat_no * seat = new Seat_no(this);
-        auto ret = seat->exec();
-        if (ret == QDialog::Accepted){
-            QString seat_num = QString::number(seat->getSeatNO());
-            seatPre += seat_num;
-        }
-    }
-    seat = seatPre;
+
     int luggage = ui->luggageD_lineEdit->text().toInt();
-    int price = 300 + 100 * luggage;
-    QMessageBox::information(this, "Price", ("Your ticket price is " + std::to_string(price)).c_str() );
+    price = 300 + 100 * luggage;
+
+    int ret = QMessageBox::information(this, "Price", ("Your ticket price is " + std::to_string(price)).c_str(), QMessageBox::Ok | QMessageBox::Cancel );
+
+    switch(ret){
+    case QMessageBox::Ok:
+        //add payment
+        if (ui->classD_comboBox->currentText() == "Economy class"){
+            seatPre = "EC-";
+            Seat_no * seat = new Seat_no(this);
+            auto ret = seat->exec();
+            if (ret == QDialog::Accepted){
+                QString seat_num = QString::number(seat->getSeatNO());
+                seatPre += seat_num;
+            }
+        }
+        else if (ui->classD_comboBox->currentText() == "Business class"){
+            seatPre = "BC-";
+            Seat_no * seat = new Seat_no(this);
+            auto ret = seat->exec();
+            if (ret == QDialog::Accepted){
+                QString seat_num = QString::number(seat->getSeatNO());
+                seatPre += seat_num;
+            }
+        }
+        else{
+            seatPre = "FC-";
+            Seat_no * seat = new Seat_no(this);
+            auto ret = seat->exec();
+            if (ret == QDialog::Accepted){
+                QString seat_num = QString::number(seat->getSeatNO());
+                seatPre += seat_num;
+            }
+        }
+        seat = seatPre;
+        QMessageBox::information(this, "Successfully booked", QString("Your ticket number is %1 and your seat is %2").arg(QString::fromStdString(id)).arg(seat));
+        this->hide();
+        break;
+    case QMessageBox::Cancel:
+        QMessageBox::critical(this, "Cancelled", "Did not make payment there for couldn't book!");
+        this->hide();
+        break;
+    }
+
+
+
     qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival << " "
              << airlines << " " << seat;
 
@@ -115,37 +132,54 @@ void Book::on_book_I_pushButton_clicked()
     ui->arrival_I_label->setText(time_arrival);
     airlines = ui->airlines_I_comboBox->currentText();
     QString seatPre;
-    if (ui->classD_comboBox->currentText() == "Economy class"){
-        seatPre = "EC-";
-        Seat_no * seat = new Seat_no(this);
-        auto ret = seat->exec();
-        if (ret == QDialog::Accepted){
-            QString seat_num = QString::number(seat->getSeatNO());
-            seatPre += seat_num;
-        }
-    }
-    else if (ui->classD_comboBox->currentText() == "Business class"){
-        seatPre = "BC-";
-        Seat_no * seat = new Seat_no(this);
-        auto ret = seat->exec();
-        if (ret == QDialog::Accepted){
-            QString seat_num = QString::number(seat->getSeatNO());
-            seatPre += seat_num;
-        }
-    }
-    else{
-        seatPre = "FC-";
-        Seat_no * seat = new Seat_no(this);
-        auto ret = seat->exec();
-        if (ret == QDialog::Accepted){
-            QString seat_num = QString::number(seat->getSeatNO());
-            seatPre += seat_num;
-        }
-    }
-    seat = seatPre;
+
     int luggage = ui->lug_I_lineEdit->text().toInt();
-    int price = 300 + 100 * luggage;
-    QMessageBox::information(this, "Price", ("Your ticket price is " + std::to_string(price)).c_str() );
+    price = 300 + 100 * luggage;
+
+
+    int ret = QMessageBox::information(this, "Price", ("Your ticket price is " + std::to_string(price)).c_str(), QMessageBox::Ok | QMessageBox::Cancel );
+
+    switch(ret){
+    case QMessageBox::Ok:
+        //add payment
+
+        if (ui->classD_comboBox->currentText() == "Economy class"){
+            seatPre = "EC-";
+            Seat_no * seat = new Seat_no(this);
+            auto ret = seat->exec();
+            if (ret == QDialog::Accepted){
+                QString seat_num = QString::number(seat->getSeatNO());
+                seatPre += seat_num;
+            }
+        }
+        else if (ui->classD_comboBox->currentText() == "Business class"){
+            seatPre = "BC-";
+            Seat_no * seat = new Seat_no(this);
+            auto ret = seat->exec();
+            if (ret == QDialog::Accepted){
+                QString seat_num = QString::number(seat->getSeatNO());
+                seatPre += seat_num;
+            }
+        }
+        else{
+            seatPre = "FC-";
+            Seat_no * seat = new Seat_no(this);
+            auto ret = seat->exec();
+            if (ret == QDialog::Accepted){
+                QString seat_num = QString::number(seat->getSeatNO());
+                seatPre += seat_num;
+            }
+        }
+
+        seat = seatPre;
+        QMessageBox::information(this, "Successfully booked", QString("Your ticket number is %1 and your seat is %2").arg(QString::fromStdString(id)).arg(seat));
+        this->hide();
+        break;
+    case QMessageBox::Cancel:
+        QMessageBox::critical(this, "Cancelled", "Did not make payment there for couldn't book!");
+        break;
+    }
+
     qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival << " "
              << airlines << " " << seat;
 }

@@ -22,7 +22,7 @@ protected:
     QString time_departure;
     QString airlines;
     QString seat;
-    int pirce;
+    int price;
 
 public:
     explicit Book(QWidget *parent = nullptr, QString pass_id = QString());

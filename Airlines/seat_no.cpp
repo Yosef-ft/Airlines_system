@@ -8,7 +8,7 @@ Seat_no::Seat_no(QWidget *parent)
 {
     ui->setupUi(this);
     for (int i=0; i<18; i++){
-        seat_color.append(Qt::white);
+        seat_color.append(Qt::black);
     }
     setLoadedColor("button1", 0, ui->one_pushButton);
     setLoadedColor("button2", 1, ui->two_pushButton);
