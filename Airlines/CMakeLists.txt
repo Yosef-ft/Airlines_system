@@ -32,6 +32,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         login.h login.cpp login.ui
         edit_info.h edit_info.cpp edit_info.ui
         update_info.h update_info.cpp update_info.ui
+        seat_no.h seat_no.cpp seat_no.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Airlines APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

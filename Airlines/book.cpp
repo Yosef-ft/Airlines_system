@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <string>
+#include "seat_no.h"
 
 std::string Book::ticketid()
 {
@@ -61,15 +62,35 @@ void Book::on_bookD_pushButton_clicked()
     time_arrival = a_time.toString("hh:mm:ss AP");
     ui->arrival_label->setText(time_arrival);
     airlines = ui->airlinesD_comboBox->currentText();
+    QString seatPre;
     if (ui->classD_comboBox->currentText() == "Economy class"){
-        seat = "EC-";
+        seatPre = "EC-";
+        Seat_no * seat = new Seat_no(this);
+        auto ret = seat->exec();
+        if (ret == QDialog::Accepted){
+            QString seat_num = QString::number(seat->getSeatNO());
+            seatPre += seat_num;
+        }
     }
     else if (ui->classD_comboBox->currentText() == "Business class"){
-        seat = "BC-";
+        seatPre = "BC-";
+        Seat_no * seat = new Seat_no(this);
+        auto ret = seat->exec();
+        if (ret == QDialog::Accepted){
+            QString seat_num = QString::number(seat->getSeatNO());
+            seatPre += seat_num;
+        }
     }
     else{
-        seat = "FC-";
+        seatPre = "FC-";
+        Seat_no * seat = new Seat_no(this);
+        auto ret = seat->exec();
+        if (ret == QDialog::Accepted){
+            QString seat_num = QString::number(seat->getSeatNO());
+            seatPre += seat_num;
+        }
     }
+    seat = seatPre;
     int luggage = ui->luggageD_lineEdit->text().toInt();
     int price = 300 + 100 * luggage;
     QMessageBox::information(this, "Price", ("Your ticket price is " + std::to_string(price)).c_str() );
@@ -93,15 +114,35 @@ void Book::on_book_I_pushButton_clicked()
     time_arrival = a_time.toString("hh:mm:ss AP");
     ui->arrival_I_label->setText(time_arrival);
     airlines = ui->airlines_I_comboBox->currentText();
+    QString seatPre;
     if (ui->classD_comboBox->currentText() == "Economy class"){
-        seat = "EC-";
+        seatPre = "EC-";
+        Seat_no * seat = new Seat_no(this);
+        auto ret = seat->exec();
+        if (ret == QDialog::Accepted){
+            QString seat_num = QString::number(seat->getSeatNO());
+            seatPre += seat_num;
+        }
     }
     else if (ui->classD_comboBox->currentText() == "Business class"){
-        seat = "BC-";
+        seatPre = "BC-";
+        Seat_no * seat = new Seat_no(this);
+        auto ret = seat->exec();
+        if (ret == QDialog::Accepted){
+            QString seat_num = QString::number(seat->getSeatNO());
+            seatPre += seat_num;
+        }
     }
     else{
-        seat = "FC-";
+        seatPre = "FC-";
+        Seat_no * seat = new Seat_no(this);
+        auto ret = seat->exec();
+        if (ret == QDialog::Accepted){
+            QString seat_num = QString::number(seat->getSeatNO());
+            seatPre += seat_num;
+        }
     }
+    seat = seatPre;
     int luggage = ui->lug_I_lineEdit->text().toInt();
     int price = 300 + 100 * luggage;
     QMessageBox::information(this, "Price", ("Your ticket price is " + std::to_string(price)).c_str() );
