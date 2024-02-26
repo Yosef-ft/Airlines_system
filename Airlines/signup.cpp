@@ -52,7 +52,7 @@ void SignUp::on_submit_pushButton_clicked()
 
     }
     else{
-        ui->statusbar->showMessage("Unable to connect to database", 100);
+        ui->statusbar->showMessage("Unable to connect to database!", 100);
     }
 
 
