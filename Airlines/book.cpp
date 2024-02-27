@@ -9,6 +9,9 @@
 #include <QMessageBox>
 #include <string>
 #include "seat_no.h"
+#include <QSqlQuery>
+#include "mainwindow.h"
+#include <QSqlError>
 
 std::string Book::ticketid()
 {
@@ -30,6 +33,7 @@ Book::Book(QWidget *parent, QString pass_id)
     , ui(new Ui::Book)
 {
     ui->setupUi(this);
+    passanger_ID = pass_id;
 }
 
 Book::~Book()
@@ -108,9 +112,32 @@ void Book::on_bookD_pushButton_clicked()
         this->hide();
         break;
     }
+    MainWindow * home = new MainWindow(this);
+    bool check = home->connect_db();
 
-
-
+    if (check){
+        QSqlQuery query;
+        query.prepare("Insert into Book values (:pass_id, :tid,:date, :source,:dest, :ta, :td, :seat, :price, :tf, :airL)");
+        query.bindValue(":pass_id", passanger_ID);
+        query.bindValue(":tid", QString::fromStdString(id));
+        query.bindValue(":date", date);
+        query.bindValue(":source", source);
+        query.bindValue(":dest", destination);
+        query.bindValue(":ta", time_arrival);
+        query.bindValue(":td", time_departure);
+        query.bindValue(":seat", seat);
+        query.bindValue(":price", price);
+        query.bindValue(":tf", "International");
+        query.bindValue(":airL", airlines);
+        if (query.exec()){
+            qDebug() << "success";
+        }else{
+            //QMessageBox::critical(this, "error",query.lastError().text());
+             qDebug () << query.lastError().text();
+        }
+    }else{
+        qDebug () << "Unable to open the database";
+    }
     qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival << " "
              << airlines << " " << seat;
 
@@ -178,6 +205,33 @@ void Book::on_book_I_pushButton_clicked()
     case QMessageBox::Cancel:
         QMessageBox::critical(this, "Cancelled", "Did not make payment there for couldn't book!");
         break;
+    }
+
+    MainWindow * home = new MainWindow(this);
+    bool check = home->connect_db();
+
+    if (check){
+        QSqlQuery query;
+        query.prepare("Insert into Book values (:pass_id, :tid,:date, :source,:dest, :ta, :td, :seat, :price, :tf, :airL)");
+        query.bindValue(":pass_id", passanger_ID);
+        query.bindValue(":tid", QString::fromStdString(id));
+        query.bindValue(":date", date);
+        query.bindValue(":source", source);
+        query.bindValue(":dest", destination);
+        query.bindValue(":ta", time_arrival);
+        query.bindValue(":td", time_departure);
+        query.bindValue(":seat", seat);
+        query.bindValue(":price", price);
+        query.bindValue(":tf", "Domestic");
+        query.bindValue(":airL", airlines);
+        if (query.exec()){
+            qDebug() << "success";
+        }else{
+            //QMessageBox::critical(this, "error",query.lastError().text());
+            qDebug () << query.lastError().text();
+        }
+    }else{
+        qDebug () << "Unable to open the database";
     }
 
     qDebug () << id << " " << date << " " << time_departure << " " << source << " " << destination << time_arrival << " "
