@@ -114,6 +114,7 @@ void Book::on_bookD_pushButton_clicked()
     }
     MainWindow * home = new MainWindow(this);
     bool check = home->connect_db();
+    QString name;
 
     if (check){
         QSqlQuery query;
@@ -134,6 +135,34 @@ void Book::on_bookD_pushButton_clicked()
         }else{
             //QMessageBox::critical(this, "error",query.lastError().text());
              qDebug () << query.lastError().text();
+        }
+        QSqlQuery qname;
+        QString sql = "select * from Passanger where passangerId = :passId";
+        qname.prepare(sql);
+        qname.bindValue("passId", passanger_ID);
+        if(qname.exec()){
+            if (qname.next()){
+                name = qname.value("full_name").toString();
+            }
+        }else{
+            qDebug()<< qname.lastError().text();
+        }
+
+        QSqlQuery query2;
+        query2.prepare("Insert into Ticket_details values(:pass_id, :tid, :name, :src, :dest, :ta, :td, :seat, :date)");
+        query2.bindValue(":pass_id", passanger_ID);
+        query2.bindValue(":tid", QString::fromStdString(id));
+        query2.bindValue(":name", name);
+        query2.bindValue(":src", source);
+        query2.bindValue(":dest", destination);
+        query2.bindValue(":ta", time_arrival);
+        query2.bindValue(":td", time_departure);
+        query2.bindValue(":seat", seat);
+        query2.bindValue(":date", date);
+        if (query2.exec()){
+            qDebug() << "success in having a ticket";
+        }else{
+            qDebug() << query2.lastError().text();
         }
     }else{
         qDebug () << "Unable to open the database";
@@ -209,9 +238,10 @@ void Book::on_book_I_pushButton_clicked()
 
     MainWindow * home = new MainWindow(this);
     bool check = home->connect_db();
+    QString name;
 
     if (check){
-        QSqlQuery query;
+        QSqlQuery query; // to insert to booking database
         query.prepare("Insert into Book values (:pass_id, :tid,:date, :source,:dest, :ta, :td, :seat, :price, :tf, :airL)");
         query.bindValue(":pass_id", passanger_ID);
         query.bindValue(":tid", QString::fromStdString(id));
@@ -225,11 +255,40 @@ void Book::on_book_I_pushButton_clicked()
         query.bindValue(":tf", "Domestic");
         query.bindValue(":airL", airlines);
         if (query.exec()){
-            qDebug() << "success";
+            qDebug() << "success in booking";
         }else{
             //QMessageBox::critical(this, "error",query.lastError().text());
             qDebug () << query.lastError().text();
         }
+        QSqlQuery qname;
+        QString sql = "select * from Passanger where passangerId = :passId";
+        qname.prepare(sql);
+        qname.bindValue("passId", passanger_ID);
+        if(qname.exec()){
+            if (qname.next()){
+                name = qname.value("full_name").toString();
+            }
+        }else{
+            qDebug()<< qname.lastError().text();
+        }
+
+        QSqlQuery query2;
+        query2.prepare("Insert into Ticket_details values(:pass_id, :tid, :name, :src, :dest, :ta, :td, :seat, :date)");
+        query2.bindValue(":pass_id", passanger_ID);
+        query2.bindValue(":tid", QString::fromStdString(id));
+        query2.bindValue(":name", name);
+        query2.bindValue(":src", source);
+        query2.bindValue(":dest", destination);
+        query2.bindValue(":ta", time_arrival);
+        query2.bindValue(":td", time_departure);
+        query2.bindValue(":seat", seat);
+        query2.bindValue(":date", date);
+        if (query2.exec()){
+            qDebug() << "success in having a ticket";
+        }else{
+            qDebug() << query2.lastError().text();
+        }
+
     }else{
         qDebug () << "Unable to open the database";
     }
