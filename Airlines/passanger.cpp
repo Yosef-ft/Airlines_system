@@ -28,11 +28,12 @@ void Passanger::on_login_pushButton_clicked()
     if (check){
         QString email = ui->email_lineEdit->text();
         QString password = ui->password_lineEdit->text();
+        QString passwordH = home->hashPassword(password);
         QSqlQuery query;
         QString sql = "Select * from passanger where email = :email and password = :password";
         query.prepare(sql);
         query.bindValue(":email", email);
-        query.bindValue(":password", password);
+        query.bindValue(":password", passwordH);
 
         if (query.exec()){
             if (query.next()){

@@ -4,7 +4,17 @@
 #include <QDebug>
 #include "signup.h"
 #include "passanger.h"
+#include <QCryptographicHash>
+#include <QByteArray>
 
+
+QString MainWindow::hashPassword(const QString &password)
+{
+    QByteArray passwordData = password.toUtf8();
+    QByteArray hashedData = QCryptographicHash::hash(passwordData, QCryptographicHash::Sha256);
+    QString hashedPassword = QString(hashedData.toHex());
+    return hashedPassword;
+}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

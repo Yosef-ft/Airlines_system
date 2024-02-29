@@ -37,6 +37,8 @@ public:
         }
     }
 
+    QString hashPassword(const QString & password);
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

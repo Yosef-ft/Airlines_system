@@ -36,7 +36,9 @@ void SignUp::on_submit_pushButton_clicked()
         query.bindValue(":age", ui->age_lineEdit->text());
         query.bindValue(":gender",ui->gender_comboBox->currentText());
         query.bindValue(":email", ui->email_lineEdit->text());
-        query.bindValue(":password", ui->password_lineEdit->text());
+        QString passWord = ui->password_lineEdit->text();
+        QString password = home->hashPassword(passWord);
+        query.bindValue(":password", password);
         query.bindValue(":data", ui->security_lineEdit->text());
 
         if(query.exec()){
